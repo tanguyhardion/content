@@ -27,6 +27,11 @@ document.addEventListener('DOMContentLoaded', () => {
       path: 'two-souls',
       title: 'Lonely Souls',
       description: 'Can red and blue souls find each other before time runs out?'
+    },
+    {
+      path: 'soul-orbit',
+      title: 'Soul Orbit - Celestial Resonance',
+      description: 'Watch soul fragments orbit, leap through rotating barriers, and merge with the stellar core in this generative simulation.'
     }
   ];
 
