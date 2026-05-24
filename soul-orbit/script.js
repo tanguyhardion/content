@@ -930,6 +930,21 @@ document.addEventListener('DOMContentLoaded', () => {
         startSimulation();
     });
 
+    // Handle double click in empty body area for fullscreen
+    document.body.addEventListener('dblclick', (e) => {
+        if (e.target === document.body || e.target === document.documentElement) {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => {
+                    console.log(`Error attempting to enable fullscreen: ${err.message}`);
+                });
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+            }
+        }
+    });
+
     // Initial draw to fill canvas background and orbit tracks
     animate();
 });

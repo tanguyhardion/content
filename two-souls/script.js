@@ -430,4 +430,19 @@ $(document).ready(function() {
         init();
         animate();
     });
+
+    // Handle double click in empty body area for fullscreen
+    document.body.addEventListener('dblclick', (e) => {
+        if (e.target === document.body || e.target === document.documentElement) {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => {
+                    console.log(`Error attempting to enable fullscreen: ${err.message}`);
+                });
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+            }
+        }
+    });
 });
