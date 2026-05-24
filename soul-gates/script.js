@@ -646,19 +646,31 @@ document.addEventListener('DOMContentLoaded', () => {
     // Event Listener
     actionBtn.addEventListener('click', startGame);
 
-    // Handle double click in empty body area for fullscreen
-    document.body.addEventListener('dblclick', (e) => {
+    // Handle double click or tap in empty body area for fullscreen
+    function toggleFullscreen(e) {
         if (e.target === document.body || e.target === document.documentElement) {
-            if (!document.fullscreenElement) {
-                document.documentElement.requestFullscreen().catch(err => {
-                    console.log(`Error attempting to enable fullscreen: ${err.message}`);
-                });
+            if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+                const docEl = document.documentElement;
+                if (docEl.requestFullscreen) docEl.requestFullscreen().catch(err => console.log(err));
+                else if (docEl.webkitRequestFullscreen) docEl.webkitRequestFullscreen();
             } else {
-                if (document.exitFullscreen) {
-                    document.exitFullscreen();
-                }
+                if (document.exitFullscreen) document.exitFullscreen();
+                else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
             }
         }
+    }
+
+    document.body.addEventListener('dblclick', toggleFullscreen);
+
+    let lastTapTime = 0;
+    document.body.addEventListener('touchend', (e) => {
+        const currentTime = new Date().getTime();
+        const tapLength = currentTime - lastTapTime;
+        if (tapLength < 500 && tapLength > 0) {
+            toggleFullscreen(e);
+            e.preventDefault(); // Prevent double-tap zoom
+        }
+        lastTapTime = currentTime;
     });
 
     // Initial draw to fill canvas background and rings
