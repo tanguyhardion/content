@@ -930,32 +930,19 @@ document.addEventListener('DOMContentLoaded', () => {
         startSimulation();
     });
 
-    // Handle double click or tap in empty body area for fullscreen
-    function toggleFullscreen(e) {
-        if (e.target === document.body || e.target === document.documentElement) {
-            if (!document.fullscreenElement && !document.webkitFullscreenElement) {
-                const docEl = document.documentElement;
-                if (docEl.requestFullscreen) docEl.requestFullscreen().catch(err => console.log(err));
-                else if (docEl.webkitRequestFullscreen) docEl.webkitRequestFullscreen();
+    // Fullscreen Event Listener
+    const fullscreenBtn = document.getElementById('fullscreen-btn');
+    if (fullscreenBtn) {
+        fullscreenBtn.addEventListener('click', () => {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch((err) => {
+                    console.log(`Error attempting to enable fullscreen: ${err.message} (${err.name})`);
+                });
             } else {
-                if (document.exitFullscreen) document.exitFullscreen();
-                else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+                document.exitFullscreen();
             }
-        }
+        });
     }
-
-    document.body.addEventListener('dblclick', toggleFullscreen);
-
-    let lastTapTime = 0;
-    document.body.addEventListener('touchend', (e) => {
-        const currentTime = new Date().getTime();
-        const tapLength = currentTime - lastTapTime;
-        if (tapLength < 500 && tapLength > 0) {
-            toggleFullscreen(e);
-            e.preventDefault(); // Prevent double-tap zoom
-        }
-        lastTapTime = currentTime;
-    });
 
     // Initial draw to fill canvas background and orbit tracks
     animate();

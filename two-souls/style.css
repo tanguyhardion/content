@@ -86,3 +86,50 @@ canvas {
     width: 100%;
     height: 100%;
 }
+
+.fullscreen-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: transparent;
+    border: none;
+    color: #888899;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 100;
+    padding: 0;
+    box-shadow: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.fullscreen-btn:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.1);
+}
+
+.fullscreen-btn:active {
+    transform: scale(0.95);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+:fullscreen .fullscreen-btn {
+    display: none;
+}
+
+:-webkit-full-screen .fullscreen-btn {
+    display: none;
+}
+
+:-moz-full-screen .fullscreen-btn {
+    display: none;
+}
+
+:-ms-fullscreen .fullscreen-btn {
+    display: none;
+}
