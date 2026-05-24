@@ -1,0 +1,210 @@
+:root {
+    --bg-dark: #05050a;
+    --cyan: #00f2fe;
+    --magenta: #ff007f;
+    --gate-outer: #ff007f;
+    --gate-middle: #9b30ff;
+    --gate-inner: #00f2fe;
+    --gold: #ffbe0b;
+    --white: #ffffff;
+    --gray: #888899;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #020204;
+    color: var(--white);
+    font-family: 'Outfit', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    /* Adjustments for Instagram UI Safe Zones */
+    padding-bottom: 120px; /* Space for bottom caption & audio UI */
+    padding-right: 60px;   /* Space for right button column */
+}
+
+.app-container {
+    width: 100%;
+    max-width: 400px;
+    height: 100vh;
+    max-height: 820px;
+    transform: scale(0.82); /* Scale down slightly to fit the safe area */
+    transform-origin: center center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px 24px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+@media (max-height: 820px) {
+    .app-container {
+        height: 100vh;
+        max-height: 100vh;
+        border-radius: 0;
+    }
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.brand {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--gray);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+}
+
+.title {
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    background-color: white;
+    border-radius: 8px;
+    padding: 8px 16px;  
+    color: black;
+    margin-bottom: 4px; 
+}
+
+#game-wrapper {
+    position: relative;
+    width: 360px;
+    height: 540px;
+    align-self: center;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+}
+
+canvas {
+    display: block;
+    background-color: #030307;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(3, 3, 7, 0.85);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    opacity: 1;
+    transition: opacity 0.4s ease;
+}
+
+.timer-overlay {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    text-align: center;
+}
+
+.overlay-content {
+    text-align: center;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.glow-orb-menu {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--gold) 20%, var(--gate-outer) 80%);
+    box-shadow: 0 0 30px var(--gate-outer), 0 0 60px var(--gate-middle);
+    margin-bottom: 25px;
+    animation: pulse 2s infinite alternate;
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.95); opacity: 0.8; }
+    100% { transform: scale(1.05); opacity: 1; }
+}
+
+.overlay-content h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+}
+
+.overlay-content p {
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.5;
+    margin-bottom: 30px;
+    max-width: 280px;
+}
+
+button {
+    font-family: 'Space Grotesk', sans-serif;
+    padding: 14px 36px;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #000;
+    background-color: var(--white);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+button:hover {
+    transform: scale(1.05);
+    background-color: var(--cyan);
+    box-shadow: 0 0 25px rgba(0, 242, 254, 0.5);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+.stat-value {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.font-mono {
+    font-family: 'Space Grotesk', monospace;
+}
+
+.progress-container {
+    width: 100%;
+    height: 6px;
+    margin-top: 40px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--gate-outer), var(--gate-middle), var(--gate-inner));
+    transition: width 0.1s linear;
+}

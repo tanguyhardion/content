@@ -1,0 +1,13 @@
+{
+  "name": "soul-arcade-hub",
+  "version": "1.0.0",
+  "description": "Dynamic homepage listing all subfolder projects for GitHub Pages deployment",
+  "main": "generate-index.js",
+  "scripts": {
+    "generate": "node generate-index.js",
+    "start": "node generate-index.js && npx -y http-server -p 8080"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
