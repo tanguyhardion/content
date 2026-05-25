@@ -1,0 +1,36 @@
+.experienceGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 4rem 0;
+  color: var(--text-secondary);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 4rem;
+}
+
+.footer {
+  margin-top: auto;
+  padding: 4rem 0 2rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,30 @@
+.titleContainer {
+  margin-bottom: 2rem;
+}
+
+.mainTitle {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+
+.subtitleText {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+}
+
+@media (max-width: 768px) {
+  .mainTitle {
+    font-size: 2.5rem;
+  }
+}
+
+.gradientText {
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}

@@ -1,13 +1,22 @@
 {
   "name": "soul-arcade-hub",
   "version": "1.0.0",
-  "description": "Dynamic homepage listing all subfolder projects for GitHub Pages deployment",
-  "main": "generate-index.js",
+  "type": "module",
+  "description": "React-based hub for interactive experiences",
   "scripts": {
-    "generate": "node generate-index.js",
-    "start": "node generate-index.js && npx -y http-server -p 8080"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.0.2",
+    "vite": "^8.0.14"
+  }
 }

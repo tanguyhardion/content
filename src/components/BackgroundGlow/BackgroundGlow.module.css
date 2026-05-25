@@ -1,0 +1,31 @@
+.ambientGlow {
+  position: fixed;
+  width: 40vw;
+  height: 40vw;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: -1;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.orb1 {
+  top: -10%;
+  left: -10%;
+  background: var(--accent-primary);
+}
+
+.orb2 {
+  bottom: -10%;
+  right: -10%;
+  background: var(--accent-secondary);
+}
+
+.orb3 {
+  top: 40%;
+  left: 50%;
+  background: var(--accent-primary);
+  width: 30vw;
+  height: 30vw;
+  opacity: 0.1;
+}

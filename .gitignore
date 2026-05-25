@@ -1,5 +1,8 @@
 # Dependency directories
 node_modules/
+dist/
+dist-ssr/
+*.local
 
 # OS metadata
 .DS_Store

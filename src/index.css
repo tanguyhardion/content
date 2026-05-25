@@ -1,0 +1,28 @@
+:root {
+  --bg-color: #050508;
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0b0;
+  --accent-primary: #6366f1;
+  --accent-secondary: #a855f7;
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --card-border: rgba(255, 255, 255, 0.08);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+}
+
