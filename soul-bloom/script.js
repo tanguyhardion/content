@@ -420,11 +420,22 @@ document.addEventListener('DOMContentLoaded', () => {
     // Fullscreen behavior
     fullscreenBtn.addEventListener('click', () => {
         if (!document.fullscreenElement) {
-            document.documentElement.requestFullscreen().catch((err) => {
-                console.log(`Error attempting to enable fullscreen: ${err.message} (${err.name})`);
-            });
+            document.documentElement.requestFullscreen()
+                .then(() => {
+                    fullscreenBtn.classList.add('hidden');
+                })
+                .catch((err) => {
+                    console.log(`Error attempting to enable fullscreen: ${err.message} (${err.name})`);
+                });
         } else {
             document.exitFullscreen();
+        }
+    });
+
+    // Handle exiting fullscreen via ESC key or browser controls
+    document.addEventListener('fullscreenchange', () => {
+        if (!document.fullscreenElement) {
+            fullscreenBtn.classList.remove('hidden');
         }
     });
 
